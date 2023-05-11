@@ -1,5 +1,6 @@
 package com.example.calculatorwithtests.Services;
 
+import com.example.calculatorwithtests.Exceptions.MyIllegalArgumentException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,8 +20,9 @@ public class CalculatorService {
 
     public String division(int a, int b) {
         if(b == 0){
-            throw new IllegalArgumentException("Деление на ноль");
+            throw new MyIllegalArgumentException("Деление на ноль");
         }
-        return a + " / " + b + " = " + ((double)a / b);
+        return String.format("%d / %d = %.2f", a,b,(double) a/b);
+        //return a + " / " + b + " = " + ((double)a / b);
     }
 }
